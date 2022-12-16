@@ -33,8 +33,9 @@
   flex-flow: row nowrap;
   justify-content: flex-end;
 }
-/* 
 /* 공통 검색 폼 */
+/* 
+
 input[type="search"] {
   -webkit-appearance: none;
   appearance: none;

@@ -101,45 +101,83 @@ input[type="search"] {
 
 /* 공통 메인 콘텐츠 섹션 제목 */
 [class*="__title"]{
-  background-color: gold;
-  font-size: 1.125rem;
+  margin-bottom: var(--spacing-base);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+
+[class*="__koTitle"]{
+  font-size: var(--text-md);
   font-weight: 700;
 }
 
-[class*="__enTitle"]{
-  font-size: 1rem;
-  font-weight: 400;
+.sprite{
+  background: url(../images/sprite_main.png) no-repeat;
+  height: 3.75rem; 
+  /* 60px */
+  padding-left: 4rem;
 }
 
+.spriteNews{
+  background-position-y: -230px;
+}
+
+.spriteBoard{
+  background-position-y: -115px;
+}
+
+.spriteFavorite{
+  background-position-y: -345px;
+}
+
+.spriteTwitter{
+  background-position-y: -460px;
+}
+
+.accentBook {
+  color: var(--accent-book);
+}
+
+.accentNews {
+  color: var(--accent-news);
+}
+
+.accentBoard {
+  color: var(--accent-board);
+}
+
+.accentTwitter {
+  color: var(--accent-twitter);
+}
+
+.accentFavorite {
+  color: var(--accent-favorite);
+}
 
 
 /* 공통 추천 서적 */
 .book {
-  background: lightgreen;
   grid-area: book;
 }
 
 /* 공통 새소식 */
 .news {
-  background: yellow;
   grid-area: news;
 }
 
 /* 공통 게시판 */
 .board {
-  background: lightsalmon;
   grid-area: board;
 }
 
 /* 공통 인기 사이트 */
 .favorite {
-  background: skyblue;
   grid-area: favorite;
 }
 
 /* 공통 트위터 */
 .twitter {
-  background: burlywood;
   grid-area: twitter;
 }
 
@@ -318,7 +356,6 @@ input[type="search"] {
 
   /* 데스크탑 메인 콘텐츠 */
   .appMain {
-    border: 5px solid red;
     max-width: var(--container-width);
     margin-left: auto;
     margin-right: auto;
@@ -327,6 +364,7 @@ input[type="search"] {
     grid-template-areas: "news news news news news news news news news news news news"
                          "book book book book twitter twitter twitter twitter twitter favorite favorite favorite"
                          "book book book book . board board board board board board board";
+  }
 }
 
 /* 고해상도 배경이미지 미디어쿼리 */
@@ -336,7 +374,7 @@ input[type="search"] {
   (min-device-pixel-ratio: 2),
   (min-resolution: 192dpi),
   (min-resolution: 2dppx) {
-  .logo__link {
+  .loglink {
     background-image: url(./../images/webcafe-logo@2x.png);
   }
 }

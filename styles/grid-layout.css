@@ -1,0 +1,81 @@
+*{
+  box-sizing: border-box;
+}
+
+
+.group1{
+  background: gold;
+}
+.group2{
+  background: pink;
+}
+.group3{
+  background: lightgreen;
+}
+.group4{
+  background: skyblue;
+}
+.group5{
+  background: salmon;
+}
+.group6{
+  background: violet;
+}
+.group7{
+  background: aquamarine;
+}
+.group8{
+  background: lightseagreen;
+}
+.group9{
+  background: MediumPurple;
+}
+.group10{
+  background: MidnightBlue;
+}
+.group11{
+  background: Olive;
+}
+.group12{
+  background: SandyBrown;
+}
+
+.container {
+  background-color: silver;
+  border: 1px solid red;
+  display: grid;
+  /* 그리드 적용 */
+  grid-template-rows: auto;
+  /* 행은 디바이스의 종류에 따라 자동으로 조정할 것이기 때문에 auto로 한다. */
+  padding: 24px;
+  gap: 25px;
+}
+
+[class *= group]{
+  height: 150px;
+}
+
+/* small device */
+@media (max-width: 767px){
+  .container {
+    grid-template-columns: 1fr;
+    /* small device의 열의 갯수 지정 */
+    /* fraction은 등장하는 갯수에 따라 부모영역을 분할하는 단위이다.
+    grid 사용시 item 외부의 padding과 인접한 item 사이의 gap을 적용할 때,
+    %단위를 사용하면 item이 잘리는 문제를 방지할 수 있다.*/
+  }
+}
+
+/* medium device */
+@media (min-width: 768px){
+  .container {
+    grid-template-columns: repeat(2, 50%)
+  }
+}
+
+/* large device */
+@media (min-width: 1280px){
+  .container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

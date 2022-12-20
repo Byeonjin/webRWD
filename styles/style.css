@@ -161,9 +161,41 @@ input[type="search"] {
   grid-area: book;
 }
 
+.book__cover {
+  background-color: yellow;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.book__info{
+  margin-top: var(--spacing-md);
+  text-align: center;
+}
+
+.book__info *{
+  display: inline;
+}
+
+.ratingStar {
+  display: block;
+  font-size: var(--text-xl);
+}
+
+.book__coverCaption{
+  margin-top: var(--spacing-md);
+  line-height: 1.6;
+}
+
 /* 공통 새소식 */
 .news {
   grid-area: news;
+}
+
+.news__summary{
+  line-height: 1.5rem;
+  margin-top: var(--spacing-md)
 }
 
 /* 공통 게시판 */

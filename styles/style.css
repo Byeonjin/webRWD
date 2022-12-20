@@ -5,6 +5,12 @@
 @import url(./base.css);
 
 /* 모든 디바이스 (All Device) */
+
+/* 공통 아이콘 (Font Awesome) */
+.far, .fas {
+  margin-right: var(--spacing-xs);
+}
+
 /* 공통 헤더 */
 .appHeader {
   position: relative;
@@ -100,92 +106,93 @@ input[type="search"] {
 }
 
 /* 공통 메인 콘텐츠 섹션 제목 */
-[class*="__title"]{
+.appMain [class*="__title"]{
   margin-bottom: var(--spacing-base);
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
 }
 
-[class*="__koTitle"]{
+.appMain [class*="__koTitle"]{
   font-size: var(--text-md);
   font-weight: 700;
 }
 
 .sprite{
-  background: url(../images/sprite_main.png) no-repeat;
-  height: 3.75rem; 
-  /* 60px */
+  background: url("./../images/sprite_main.png") no-repeat;
+  height: 3.75rem;
   padding-left: 4rem;
 }
 
+.spriteBook{
+  background-position: 0 0;
+}
 .spriteNews{
-  background-position-y: -230px;
+  background-position: 0 -230px;
 }
-
 .spriteBoard{
-  background-position-y: -115px;
+  background-position: 0 -115px;
 }
-
 .spriteFavorite{
-  background-position-y: -345px;
+  background-position: 0 -345px;
 }
-
 .spriteTwitter{
-  background-position-y: -460px;
+  background-position: 0 -460px;
 }
 
-.accentBook {
+.accentBook{
   color: var(--accent-book);
 }
-
-.accentNews {
+.accentNews{
   color: var(--accent-news);
 }
-
-.accentBoard {
+.accentBoard{
   color: var(--accent-board);
 }
-
-.accentTwitter {
+.accentFavorite{
+  color: var(--accent-favorite);
+}
+.accentTwitter{
   color: var(--accent-twitter);
 }
 
-.accentFavorite {
-  color: var(--accent-favorite);
+/* 공통 메인 콘텐츠 섹션 본문 */
+.appMain [class*="__summary"] {
+  line-height: 1.6;
+  margin-top: var(--spacing-base);
 }
-
 
 /* 공통 추천 서적 */
 .book {
   grid-area: book;
 }
 
-.book__cover {
-  background-color: yellow;
+.book__cover{
   width: 80%;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  /* display: flex;
+  flex-flow: column nowrap;
+  align-items: center; */
+}
+
+.book__coverCaption{
+  margin-top: var(--spacing-sm);
+  line-height: 1.6;
 }
 
 .book__info{
-  margin-top: var(--spacing-md);
   text-align: center;
+  margin-top: var(--spacing-base);
 }
-
 .book__info *{
   display: inline;
 }
 
-.ratingStar {
+.ratingStar{
   display: block;
   font-size: var(--text-xl);
-}
-
-.book__coverCaption{
-  margin-top: var(--spacing-md);
-  line-height: 1.6;
 }
 
 /* 공통 새소식 */
@@ -193,15 +200,56 @@ input[type="search"] {
   grid-area: news;
 }
 
-.news__summary{
-  line-height: 1.5rem;
-  margin-top: var(--spacing-md)
+.news__date{
+  display: block;
+  margin-top: var(--spacing-base);
+  text-align: right;
 }
 
 /* 공통 게시판 */
 .board {
   grid-area: board;
+  display: flex;
+  flex-flow: row wrap;
+  overflow: hidden;
 }
+
+.board__title{
+  flex: 1 1 auto;
+}
+
+.board__list{
+  order: 1;
+  flex:1 1 auto;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: var(--spacing-sm);
+  width: 100%;
+}
+
+.board__item{
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.board__link{
+  flex: 0 1 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: calc(100% - 6.25em);
+}
+
+.board__date{
+  flex: 0 0 auto;
+  width: 6.25em;
+  text-align: right;
+}
+
+.board__more{
+  padding-top: var(--spacing-sm);
+}
+
 
 /* 공통 인기 사이트 */
 .favorite {
@@ -211,6 +259,33 @@ input[type="search"] {
 /* 공통 트위터 */
 .twitter {
   grid-area: twitter;
+}
+.twitter__userInfo{
+  gap: var(--spacing-xs);
+  display: inline-flex;
+}
+
+.twitter__userProfile{
+  width: 25%;
+  aspect-ratio: 1/1;
+  min-width: 3.125rem;
+  max-width: 5.625rem;
+  float: right;
+  shape-outside: circle(50%);
+}
+
+.twitter__userProfileImage{
+  border-radius: 50%;
+  border: 1px solid var(--primary-color);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 30% 40%;
+}
+
+.twitter__date{
+  display: block;
+  margin-top: var(--spacing-xs);
 }
 
 /* 모바일 디바이스 (Mobile Device) */
@@ -331,6 +406,18 @@ input[type="search"] {
       "favorite"
       "twitter";
   }
+
+  /* 모바일 인기 사이트 */
+  .favorite__item{
+    margin-top: var(--spacing-sm);
+  }
+
+  .favorite__link::after{
+    content: attr(data-tooltip);
+    color: var(--accent-favorite);
+    font-size: var(--text-sm);
+    margin-left: var(--spacing-xs);
+  }
 }
 
 /* 데스크탑 디바이스 (Desktop Device) */
@@ -396,7 +483,6 @@ input[type="search"] {
     grid-template-areas: "news news news news news news news news news news news news"
                          "book book book book twitter twitter twitter twitter twitter favorite favorite favorite"
                          "book book book book . board board board board board board board";
-  }
 }
 
 /* 고해상도 배경이미지 미디어쿼리 */
@@ -406,7 +492,7 @@ input[type="search"] {
   (min-device-pixel-ratio: 2),
   (min-resolution: 192dpi),
   (min-resolution: 2dppx) {
-  .loglink {
+  .logo__link {
     background-image: url(./../images/webcafe-logo@2x.png);
   }
 }
